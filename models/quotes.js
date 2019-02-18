@@ -9,10 +9,6 @@ const quotesShema = new Schema({
   autor: {
     type: String,
     required: [true, "the autor's name is required"]
-  },
-  autorLife: {
-    type: Boolean,
-    default: true
   }
 });
 

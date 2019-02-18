@@ -15,34 +15,29 @@
 
     <!-- MAIN TABLE -->
 
-    <label for="autorIN">name of the autor</label>
-    <br>
-    <input name="autorIN" id="autorIN" type="text">
+    <form action="/api/quotes/makeQuote" method="post">
 
-    <br>
-    <br>
-    <br>
-    <br>
+      <label for="autor">name of the autor</label>
+      <br>
+      <input name="autor" id="autor" type="text">
 
-    <label for="quoteIN">the quote it self</label>
-    <br>
-    <input name="quoteIN" id="quoteIN" type="text">
+      <br>
+      <br>
+      <br>
+      <br>
 
-    <br>
-    <br>
-    <br>
-    <br>
+      <label for="quote">the quote it self</label>
+      <br>
+      <input name="quote" id="quote" type="text">
 
-    <label for="autorLife"></label>
-    <br>
-    <input name="autorLifeIN" id="autorLifeIN" type="checkbox">
+      <br>
+      <br>
+      <br>
+      <br>
 
-    <br>
-    <br>
-    <br>
-    <br>
+      <button type="submit" name="makeThis" id="makeThis">MAKE THIS QUOTE</button>
 
-    <button type="button" name="makeThis" id="makeThis">MAKE THIS QUOTE</button>
+    </form>
 
   </div>
 

@@ -18,3 +18,9 @@ body{
 button, input{
   color: skyblue;
 }
+
+
+.aQuote{
+  width: 90%;
+  height: 100px;
+}

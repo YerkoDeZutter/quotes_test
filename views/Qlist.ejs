@@ -13,22 +13,17 @@
 
   <div id="container">
 
-    <!-- MAIN TABLE -->
 
-    <h2>autor: <%= ranQuote.autor %></h2>
+    <% for( var i = 0 ; i < thisQuote.length ; i++){ %>
 
-    <br>
-
-    <h1><%= ranQuote.quote %></h1>
+    <div class="aQuote" id=""><%= thisQuote[i] %></div>
 
     <br>
 
-    <h4>ID: <%= ranQuote._id %></h4>
+    <button type="button" name="button"></button>
+    <button type="button" name="button"></button>
 
-    <br>
-
-    <a href="/api/quotes/makeQuote">Make a quote</a>
-
+    <% } %>
 
 
   </div>
