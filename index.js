@@ -33,7 +33,8 @@ app.use((err, req, res, next)=>{
 
 // mongoose.connect("mongodb://username:123password@ds251902.mlab.com:51902/testerino");  THIS IS FOR ONLINE DATABASE
 
-mongoose.connect("mongodb://localhost/quotes");
+// mongoose.connect("mongodb://localhost/quotes");
+mongoose.connect("mongodb+srv://yerQuote:werkPLS@quotetest-1j4gq.mongodb.net/test?retryWrites=true");
 mongoose.Promise = global.Promise;
 
 

@@ -12,8 +12,13 @@ router.get("/quotes", (req, res, next) =>{
   })
 });
 
+
 router.get("/quotes/makeQuote", (req, res, next) =>{
-  res.render("makeQ", {});
+  res.render("makeQ", {"motode": "makeQuote"});
+});
+
+router.get("/quotes/update/:id", (req, res, next) =>{
+  res.render("makeQ", {"motode": "update/" + req.params.id});
 });
 
 router.get("/quotes/list", (req, res, next) =>{
@@ -33,17 +38,21 @@ router.post("/quotes/makeQuote", (req, res, next) =>{
   });
 });
 
-router.put("/quotes/:id", (req, res, next) =>{
+router.put("/quotes/list/:id", (req, res, next) =>{
+  res.send("stuf");
+  // console.log(req.body);
   Quote.findByIdAndUpdate({_id: req.params.id}, req.body).then(()=>{
     Quote.findOne({_id: req.params.id}).then((quote)=>{
-      res.send(quote);
+      console.log(quote);
     }).catch(next);
   });
-});
-
-router.delete("/quotes/:id", (req, res, next) =>{
-  Quote.findByIdAndRemove({_id: req.params.id}).then((quote)=>{
-    res.send(quote);
+})
+// window.location.href = "/api/quotes"
+router.delete("/quotes/list/:id", (req, res, next) =>{
+  Quote.findByIdAndRemove({_id: req.params.id}).then(()=>{
+    Quote.find({_id: req.params.id}).then(quote=>{
+      console.log(quote);
+    });
   });
 });
 

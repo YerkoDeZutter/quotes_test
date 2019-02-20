@@ -16,17 +16,99 @@
 
     <% for( var i = 0 ; i < thisQuote.length ; i++){ %>
 
-    <div class="aQuote" id=""><%= thisQuote[i] %></div>
+    <div id="<%= thisQuote[i].id %>" class="aQuote" id="">
+      <p><%= thisQuote[i].autor %></p>
+      <p><%= thisQuote[i].quote %></p>
+      <p><%= thisQuote[i].id %></p>
 
-    <br>
+      <button type="button" name="button" class="updateMe">update Me</button>
+      <button type="button" name="button" class="delete">delete</button>
 
-    <button type="button" name="button"></button>
-    <button type="button" name="button"></button>
+    </div>
 
     <% } %>
 
 
   </div>
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+crossorigin="anonymous"></script>
+
+  <script>
+
+    $(".delete").click(function() {
+
+      const options = {
+        method: "DELETE",
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify({'id':$(this).parent().attr("id")})
+      }
+
+      fetch("/api/quotes/list/" + $(this).parent().attr("id"), options);
+
+    })
+
+
+    $(".updateMe").click(function() {
+
+      $('<br />').appendTo("#" + $(this).parent().attr("id"));
+
+      $('<label />').attr({
+        "for": "updateAutor"
+      }).text("update Autor: ").appendTo("#" + $(this).parent().attr("id"));
+
+      $('<input />').attr({
+        "class": "updateAutor",
+        "name": "updateAutor"
+      }).appendTo("#" + $(this).parent().attr("id"));
+
+
+      $('<br />').appendTo("#" + $(this).parent().attr("id"));
+
+
+
+      $('<label />').attr({
+        "for": "updateQuote"
+      }).text("update Quote: ").appendTo("#" + $(this).parent().attr("id"));
+
+      $('<input />').attr({
+        "class": "updateQuote",
+        "name": "updateQuote"
+      }).appendTo("#" + $(this).parent().attr("id"));
+
+
+
+      $('<br />').appendTo("#" + $(this).parent().attr("id"));
+
+
+      $('<button />').attr({
+        "class": "update"
+      }).text("update").appendTo("#" + $(this).parent().attr("id"));
+
+      $(".update").click(function() {
+
+        const options = {
+          method: "PUT",
+          headers: {'content-type': 'application/json'},
+          body: JSON.stringify({
+            'id':$(this).parent().attr("id"),
+             "quote": $(".updateQuote").val(),
+             "autor": $(".updateAutor").val()
+           })
+        }
+
+        fetch("/api/quotes/list/" + $(this).parent().attr("id"), options);
+        // .then(window.location.href = "/api/quotes")
+
+      })
+
+    })
+
+  </script>
 
 </body>
 
